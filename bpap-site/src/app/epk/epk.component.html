@@ -1,5 +1,5 @@
 <div class="pageView">
-	<div class="page fade-in" id="background">
+	<div class="page" id="background">
 		<div id="header-text-container">
 			<div class="row" id="header-text">
 				<img src="../../assets/img/headertext.png" alt="BROKINPAPER">	
@@ -24,100 +24,167 @@
 	<div class="page" id="info-text-container">
 		<!-- information columns -->
 		<div class="row">
+			<div class="col-4 music-container">
+				<!-- MUSIC -->
+				<div>
+					<div class="title-header">MUSIC</div>
+					<div *ngFor="let album of sortedAlbums; let i = index" [attr.data-index]="i" class="album-container">
+						<div class="outline" (mouseenter)="showhideMusicBox(i)" (mouseleave)="showhideMusicBox(i)" (click)="showhideMusicBoxToggle(i)" [@MusixBoxHover]="outlinehover[i]">
+							<div class="album-art">
+								<span><img src="../../assets/img/{{album.title.toLowerCase()}}.png" alt="{{album.title.toUpperCase()}}" draggable="false"></span>
+							</div>
+							<div class="album-info">
+								<div class="album-text">
+									<div class="album-text-header">
+										<span>{{album.title.toUpperCase()}}</span>
+									</div>
+									<div class="album-text-rdate">
+										<span>Release Date: {{album.rel_date}}</span>
+									</div>
+								</div>
+								<div class="music-links" [@MusicBoxLinksHover]="linkhover[i]">
+									<div class="music-link">
+										<a href="https://open.spotify.com/artist/7mfA00WMGGGFbpeto1kVW9?si=mQyRL_FjQwyP06gMN3wImA" target=_blank><img class="platform-logo" src="../../assets/logo/sp-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+									</div>
+									<div class="music-link">
+										<a href="https://music.apple.com/artist/brokinpaper/1352389235" target=_blank><img class="platform-logo" src="../../assets/logo/ap-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+									</div>
+									<div class="music-link">
+										<a href="https://soundcloud.com/brokinpaper" target=_blank><img class="platform-logo" src="../../assets/logo/sc-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+									</div>
+									<div class="music-link">
+										<a href="https://www.deezer.com/artist/11962993" target=_blank><img class="platform-logo" src="../../assets/logo/dz-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+									</div>
+									<div class="music-link">
+										<a href="https://napster.com/artist/brokinpaper" target=_blank><img class="platform-logo" src="../../assets/logo/np-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 		 			
+				</div>			
+			</div>
 			<div class="col-4">
-				<!-- MUSIC column -->
-				<div class="title-header">MUSIC</div>
-				<div class="album-container">
-					<div class="album-art">
-						<span><img src="../../assets/img/librae.jpg" alt="LIBRAE"></span>
-					</div>
-					<div class="album-text">
-						<div class="album-text-header">
-							<span>LIBRAE</span>
-						</div>
-						<div class="album-text-rdate">
-							<span>Release: 12/26/2019</span>
-						</div>
-					</div>
-				</div> 		
-				<div class="album-container">
-					<div class="album-art">
-						<span><img src="../../assets/img/maslow.png" alt="THE MASLOW EP"></span>
-					</div>
-					<div class="album-text">
-						<div class="album-text-header">
-							<span>THE MASLOW EP</span>
-						</div>
-						<div class="album-text-rdate">
-							<span>Release: 10/25/2019</span>
+				<!-- PRESS -->
+				<div>
+					<div class="title-header">PRESS</div>
+					<div class="press-container">
+						<div class="press">
+							<div class="press-title">
+								<a href="http://www.thenocturnaltimes.com/brokinpaper-drops-new-atmospheric-ep-the-maslow/" target="_blank">
+									BrokinPaper Drops New Atmospheric EP, 'The Maslow'
+								</a>
+							</div>
+							<div class="press-author">By <a href="http://www.thenocturnaltimes.com/" target="_blank">The Nocturnal Times</a></div>
 						</div>
 					</div>
-				</div>		
-				<div class="album-container">
-					<div class="album-art">
-						<span><img src="../../assets/img/elysium.png" alt="ELYSIUM"></span>
+					<div class="press-container">
+						<div class="press">
+							<div class="press-title">
+								<a href="https://www.aficia.info/playlists/playlists-exclusives/supermassive-4/188556" target="_blank">
+									(FR) Supermassive : sa playlist exclusive avec The Weeknd, Twenty One Pilots, Jabberwocky…
+								</a>
+							</div>
+							<div class="press-author">By <a href="https://www.aficia.info/author/valentin" target="_blank">Valentin Malfroy</a></div>
+						</div>
 					</div>
-					<div class="album-text">
-						<div class="album-text-header">
-							<span>ELYSIUM</span>
+				</div>					
+				<!-- LIVE SHOWS -->
+				<div>
+					<div class="title-header" id="show-header">LIVE SHOWS</div>
+					<div class="event-container">
+						<div class="event">
+							<span>02/21/2020 at <span class="venue">PIANOS NYC</span></span>
 						</div>
-						<div class="album-text-rdate">
-							<span>Release: 06/01/2019</span>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>06/08/2019 at <span class="venue">THE DELANCEY</span></span>
 						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>11/17/2018 at PIANOS NYC</span>
+						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>08/04/2018 at THE DELANCEY</span>
+						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>04/07/2018 at THE DELANCEY</span>
+						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>01/20/2018 at THE DELANCEY</span>
+						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>07/21/2017 at THE WELL BROOKLYN</span>
+						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>01/21/2017 at LEFTFIELD ON LUDLOW</span>
+						</div>
+					</div>
+					<div class="event-container">
+						<div class="event">
+							<span>09/22/2016 at CITIFIELD, BEFORE THE METS / PHILLIES GAME</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<!-- SOCIAL MEDIA -->
+				<div>
+					<div class="title-header">SOCIAL MEDIA</div>
+					<div class="social row">
+						<div class="brandlogo col-4" *ngIf="showig" [@fadeInOut]><img src="../../assets/logo/ig-logo-color.png"></div>
+						<div class="platformname col-4" (mouseover)="showig=true" (mouseout)="showig=false"><a href="https://instagram.com/brokinpaper/" target="_blank">INSTAGRAM</a></div>
+						<div class="brandlogo col-4" *ngIf="showig" [@fadeInOut]><img src="../../assets/logo/ig-logo-color.png"></div>
+					</div>
+					<div class="social row">
+						<div class="brandlogo col-4" *ngIf="showfb" [@fadeInOut]><img src="../../assets/logo/fb-logo-color.png"></div>
+						<div class="platformname col-4" (mouseover)="showfb=true" (mouseout)="showfb=false"><a href="https://facebook.com/brokinpaper/" target="_blank">FACEBOOK</a></div>
+						<div class="brandlogo col-4" *ngIf="showfb" [@fadeInOut]><img src="../../assets/logo/fb-logo-color.png"></div>
+					</div>
+					<div class="social row">
+						<div class="brandlogo col-4" *ngIf="showyt" [@fadeInOut]><img src="../../assets/logo/yt-logo-color.png"></div>
+						<div class="platformname col-4" (mouseover)="showyt=true" (mouseout)="showyt=false"><a href="https://youtube.com/brokinpaper/" target="_blank">YOUTUBE</a></div>
+						<div class="brandlogo col-4" *ngIf="showyt" [@fadeInOut]><img src="../../assets/logo/yt-logo-color.png"></div>
+					</div>
+					<div class="social row">
+						<div class="brandlogo col-4" *ngIf="showtw" [@fadeInOut]><img src="../../assets/logo/tw-logo-color.png"></div>
+						<div class="platformname col-4" (mouseover)="showtw=true" (mouseout)="showtw=false"><a href="https://twitter.com/brokinpaper/" target="_blank">TWITTER</a></div>
+						<div class="brandlogo col-4" *ngIf="showtw" [@fadeInOut]><img src="../../assets/logo/tw-logo-color.png"></div>
+					</div>
+					<div class="social row">
+						<div class="platformname" (mouseover)="bphover=true" (mouseout)="bphover=false"><a routerLink="/home" routerLinkActive="active">BROKINPAPER.COM</a></div>
 					</div>
 				</div>	
-			</div>
-			<div class="col-4">
-				<div class="title-header">PAST SHOWS</div>
-				<div class="event-container">
-					<div class="event">
-						<span>02/21/2020 at PIANOS NYC</span>
+				<!--CONTACT-->
+				<div>
+					<div class="title-header" id="contact-header">CONTACT</div>
+					<div class="contact row">
+						<div class="col-4"><span class="title" *ngIf="showmgmt" [@fadeInOutEaseOut]>mgmt ⭢</span></div>
+						<div class="contactdetail col-4" (mouseover)="showmgmt=true" (mouseout)="showmgmt=false"><a href="mailto:andres@brokinpaper.com">andres@brokinpaper.com</a></div>
+						<div class="col-4"></div>
 					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>06/08/2019 at THE DELANCEY</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>11/17/2018 at PIANOS NYC</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>08/04/2018 at THE DELANCEY</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>04/07/2018 at THE DELANCEY</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>01/20/2018 at THE DELANCEY</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>07/21/2017 at THE WELL BROOKLYN</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>01/21/2017 at LEFTFIELD ON LUDLOW</span>
-					</div>
-				</div>
-				<div class="event-container">
-					<div class="event">
-						<span>09/22/2016 at CITIFIELD, BEFORE THE METS / PHILLIES GAME</span>
+					<div class="contact row">
+						<div class="col-4"><span class="title" *ngIf="showartist" [@fadeInOutEaseOut]>artist ⭢</span></div>
+						<div class="contactdetail col-4" (mouseover)="showartist=true" (mouseout)="showartist=false"><a href="mailto:bp@brokinpaper.com">bp@brokinpaper.com</a></div>
+						<div class="col-4"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-4">
-				<div class="title-header">SOCIAL MEDIA</div>
-			</div>
+		</div>
+		<div class="copyright">
+			COPYRIGHT 2020 BROKINPAPER; ALL RIGHTS RESERVED.
 		</div>
 	</div>
 </div>
