@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -19,6 +21,7 @@ const appRoutes: Routes = [
 		EpkComponent
 	],
 	imports: [
+		BrowserAnimationsModule,
 		BrowserModule,
 		RouterModule.forRoot(
 			appRoutes, {
