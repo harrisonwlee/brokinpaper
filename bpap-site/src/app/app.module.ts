@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +12,6 @@ const appRoutes: Routes = [
 	{ path: 'epk', component: EpkComponent },
 	{ path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
-
 
 @NgModule({
 	declarations: [
@@ -26,7 +25,8 @@ const appRoutes: Routes = [
 		RouterModule.forRoot(
 			appRoutes, {
 				enableTracing: true,
-				scrollPositionRestoration: 'enabled'
+				scrollPositionRestoration: 'enabled',
+				preloadingStrategy: PreloadAllModules
 			}
 		),
 	],
