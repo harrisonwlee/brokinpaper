@@ -12,10 +12,6 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  	res.json({ message: "Welcome to bezkoder application." });
-});
-
 const db = require("./models");
 db.mongoose
 	.connect(db.url, {
