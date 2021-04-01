@@ -26,7 +26,6 @@ const appRoutes: Routes = [
 		HttpClientModule,
 		RouterModule.forRoot(
 			appRoutes, {
-				enableTracing: true,
 				scrollPositionRestoration: 'enabled',
 				preloadingStrategy: PreloadAllModules
 			}
