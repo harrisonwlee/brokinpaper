@@ -1,10 +1,11 @@
 {
-  "name": "hello-world",
+  "name": "bpap-backend",
   "version": "1.0.0",
-  "description": "Hello World, NodeJS!!!",
-  "main": "src/app.js",
+  "description": "Backend to the brokinpaper website",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"build": "npm ci"
   },
   "author": "",
   "license": "ISC",

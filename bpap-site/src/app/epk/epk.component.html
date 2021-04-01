@@ -29,10 +29,10 @@
 				<!-- MUSIC -->
 				<div>
 					<div class="title-header">MUSIC</div>
-					<div *ngFor="let album of sortedAlbums; let i = index" [attr.data-index]="i" class="album-container">
+					<div *ngFor="let album of albums; let i = index" [attr.data-index]="i" class="album-container">
 						<div class="outline" (mouseenter)="showhideMusicBox(i)" (mouseleave)="showhideMusicBox(i)" (click)="showhideMusicBoxToggle(i)" [@MusixBoxHover]="outlinehover[i]">
 							<div class="album-art">
-								<span><img src="../../assets/img/{{album.title.toLowerCase()}}.png" alt="{{album.title.toUpperCase()}}" draggable="false"></span>
+								<span><img src="../../assets/img/{{album.title.toLowerCase()}}.jpg" alt="{{album.title.toUpperCase()}}" draggable="false"></span>
 							</div>
 							<div class="album-info">
 								<div class="album-text">
@@ -40,24 +40,24 @@
 										<span>{{album.title.toUpperCase()}}</span>
 									</div>
 									<div class="album-text-rdate">
-										<span>Release Date: {{album.rel_date}}</span>
+										<span>Release Date: {{album.release_date | date: format}}</span>
 									</div>
 								</div>
 								<div class="music-links" [@MusicBoxLinksHover]="linkhover[i]">
 									<div class="music-link">
-										<a href="https://open.spotify.com/artist/7mfA00WMGGGFbpeto1kVW9?si=mQyRL_FjQwyP06gMN3wImA" target=_blank><img class="platform-logo" src="../../assets/logo/sp-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+										<a href="{{album.urls.spotify_url || defSpotify }}" target=_blank><img class="platform-logo" src="../../assets/logo/sp-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
 									</div>
 									<div class="music-link">
-										<a href="https://music.apple.com/artist/brokinpaper/1352389235" target=_blank><img class="platform-logo" src="../../assets/logo/ap-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+										<a href="{{album.urls.apple_url || defApple}}" target=_blank><img class="platform-logo" src="../../assets/logo/ap-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
 									</div>
 									<div class="music-link">
-										<a href="https://soundcloud.com/brokinpaper" target=_blank><img class="platform-logo" src="../../assets/logo/sc-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+										<a href="{{album.urls.soundcloud_url || defSoundCloud}}" target=_blank><img class="platform-logo" src="../../assets/logo/sc-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
 									</div>
 									<div class="music-link">
-										<a href="https://www.deezer.com/artist/11962993" target=_blank><img class="platform-logo" src="../../assets/logo/dz-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+										<a href="{{album.urls.deezer_url || defDeezer}}" target=_blank><img class="platform-logo" src="../../assets/logo/dz-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
 									</div>
 									<div class="music-link">
-										<a href="https://napster.com/artist/brokinpaper" target=_blank><img class="platform-logo" src="../../assets/logo/np-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
+										<a href="{{album.urls.napster_url || defNapster}}" target=_blank><img class="platform-logo" src="../../assets/logo/np-logo-mlink.png" draggable="false" (click)="showhideMusicBoxToggle(i)"></a>
 									</div>
 								</div>
 							</div>
