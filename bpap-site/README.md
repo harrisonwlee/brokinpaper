@@ -1,5 +1,5 @@
-# BrokinPaper.com
+# BrokinPaper.com frontend
 
-- Frontend built in Angular. 
+- Built in Angular. 
 - Not optimized for mobile (yet!)
 - Ongoing art / development project (for fun and for business) 
