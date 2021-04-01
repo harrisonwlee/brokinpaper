@@ -1,4 +1,4 @@
-# BrokiPaper.com
+# BrokinPaper.com
 
 - Frontend built in Angular. 
 - Not optimized for mobile (yet!)
