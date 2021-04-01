@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../classes/album';
+import { AlbumService } from '../services/album.service';
 import * as animations from './epk-animations';
 
 @Component({
@@ -14,6 +15,18 @@ import * as animations from './epk-animations';
 	]
 })
 export class EpkComponent implements OnInit {
+	// albums array
+	albums?: Album[];
+
+	// date format for release date
+	format: string;
+
+	// default music links for albums
+	defSpotify: string;
+	defApple: string;
+	defSoundCloud: string;
+	defDeezer: string;
+	defNapster: string;
 
 	// social media booleans
 	showig: boolean;
@@ -25,34 +38,25 @@ export class EpkComponent implements OnInit {
 	showmgmt: boolean;
 	showartist: boolean;
 
-	// move to db eventually
-	albums = [
-		new Album(
-			'Astro EP',
-			'5/5/2016',
-			'https://open.spotify.com/album/3WISXIoOeE0Vz3N8HV6Dnd?si=Bi6YwiGySOus9_kLThmNPg',
-			'https://music.apple.com/album/astro-single/1355981302',
-			'https://www.deezer.com/album/58366052',
-			''
-			),
-		new Album('Hierarchy', '10/25/2018', '', '', '', ''),
-		new Album('Nightwatch', '12/10/2018', '', '', '', ''),
-		new Album('Leap', '1/24/2019', '', '', '', ''),
-		new Album('Elysium', '7/1/2019', '', '', '', ''),
-		new Album('The Maslow EP', '10/25/2019', '', '', '', ''),
-		new Album('Librae', '12/26/2019', '', '', '', ''),
-		new Album('Hemera', '4/9/2020', '', '', '', ''),
-		new Album('Neo Brut', '4/20/2020', '', '', '', ''),
-	];
-
 	bphover: boolean;
 
 	// array controls animation for hovering over albums
-	outlinehover: string[] = new Array(this.albums.length);
-	linkhover: string[] = new Array(this.albums.length);
-	togglestate: string[] = new Array(this.albums.length);
+	outlinehover: string[];
+	linkhover: string[];
+	togglestate: string[];
 
-	constructor() {
+	ngOnInit(): void {
+		this.retrieveAlbums();
+  	}
+
+	constructor(private albumService: AlbumService) {
+		this.format = 'MM/dd/yyyy';
+		this.defSpotify = 'https://open.spotify.com/artist/7mfA00WMGGGFbpeto1kVW9?si=8bBrWxEuSx2EGZNmX92ROg';
+		this.defApple = 'https://music.apple.com/us/artist/brokinpaper/1352389235';
+		this.defSoundCloud = 'https://soundcloud.com/brokinpaper';
+		this.defDeezer = 'https://www.deezer.com/en/artist/11962993';
+		this.defNapster = 'https://us.napster.com/artist/brokinpaper';
+
 		this.showig = false;
 		this.showfb = false;
 		this.showyt = false;
@@ -61,17 +65,35 @@ export class EpkComponent implements OnInit {
 
 		this.showmgmt = false;
 		this.showartist = false;
-
-		this.outlinehover.fill('hide');
-		this.linkhover.fill('hide');
-		this.togglestate.fill('off');
 	}
 
+	retrieveAlbums(): void {
+    	this.albumService.getAll()
+      	.subscribe(
+        data => {
+			this.albums = data;
+			this.albums.sort((a, b) => {
+				return <any>new Date(b.release_date) - <any>new Date(a.release_date);
+			});
+			this.outlinehover = new Array(this.albums.length);
+			this.linkhover = new Array(this.albums.length);
+			this.togglestate = new Array(this.albums.length);
+			this.outlinehover.fill('hide');
+			this.linkhover.fill('hide');
+			this.togglestate.fill('off');
+        },
+        error => {
+			console.log(error);
+        });
+  	}
+
+	/*
 	get sortedAlbums() {
 		return this.albums.sort((a, b) => {
-			return <any>new Date(b.rel_date) - <any>new Date(a.rel_date);
+			return <any>new Date(b.release_date) - <any>new Date(a.release_date);
 		});
 	}
+	*/
 
 	showhideMusicBoxToggle(i) {
 		if (this.togglestate[i] === 'off') {
@@ -98,9 +120,4 @@ export class EpkComponent implements OnInit {
 			this.linkhover[i] = 'show';
 		}
 	}
-
-
-  	ngOnInit() {
-  	}
-
 }
