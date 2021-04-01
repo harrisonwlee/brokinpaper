@@ -1,6 +1,6 @@
 {
   "name": "bpap-backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Backend to the brokinpaper website",
   "main": "src/server.js",
   "scripts": {
