@@ -11,7 +11,7 @@ exports.findAll = (req, res) => {
     })
     .catch(err => {
 		res.status(500).send({
-        	message: err.message || "Some error occurred while retrieving tutorials."
+        	message: err.message || "Error occurred while retrieving albums."
       	});
 	});
 };
