@@ -13,7 +13,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./models");
+const db = require("./dev-models");
 db.mongoose
 	.connect(db.url, {
     	useNewUrlParser: true,
@@ -29,10 +29,10 @@ db.mongoose
     	process.exit();
 	});
 	  
-require("./routes/album.routes")(app);
+require("./dev-routes/dev-album.routes")(app);
 
-//const PORT = process.env.PORT || 8080;
-var listener = app.listen(0, () => {
+const PORT = process.env.PORT || 8080;
+var listener = app.listen(PORT, () => {
 	timestamp = new Date();
-  	console.log(timestamp.toUTCString() + `: Server is running on port ${listener.address().port}.`);
+  	console.log(timestamp.toUTCString() + `: DEVELOPMENT Server is running on port ${listener.address().port}.`);
 });
