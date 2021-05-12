@@ -12,6 +12,16 @@
 	to {opacity: 1;}
 }
 
+@-webkit-keyframes fadeout {
+	from {opacity: 1.0;}
+	to {opacity: 0;}
+}
+
+@keyframes fadeout {
+	from {opacity: 1.0;}
+	to {opacity: 0;}
+}
+
 .pageView {
 	background-color: black;
 }
@@ -35,6 +45,10 @@
     animation: fadein 2s;
 }
 
+#center-container {
+	height: 100%;
+}
+
 #contact-header {
 	margin-top: @margin-top-title + 40;
 	margin-bottom: 14px;
@@ -44,7 +58,7 @@
 	margin-left: 0;
 	margin-right: 0;
 	margin-bottom: 18px;
-	font-family: Arial;
+	//font-family: Arial;
 	color: white;
 	font-size: 20px;
 	max-width: 100%;
@@ -54,6 +68,17 @@
 		top: 1px;
 		bottom: 0;
 		left: 5px;
+		height: 20px;
+		margin: auto;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.title-small-screen {
+		position: absolute;
+		top: 1px;
+		bottom: 0;
+		right: 20%;
 		height: 20px;
 		margin: auto;
 		font-size: 16px;
@@ -103,7 +128,7 @@
 			user-drag: none;
 
 			-webkit-animation: fadein 0.5s; 
-    		animation: fadein 0.5s;
+			animation: fadein 0.5s;
 		}
 	}
 }
@@ -112,13 +137,17 @@
 	color: white;
 	margin-top: 60px;
 	margin-bottom: 60px;
-	font-family: Arial;
+	font-family: NimbusSansBold;
 	font-size: 1.875em;
 	font-weight: bold;
-	letter-spacing: 5px;
+	letter-spacing: 5px;	
 
-	-webkit-animation: fadein 0.8s; 
-    animation: fadein 0.8s;
+	-webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+	-khtml-user-select: none; 
+	-moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
 }
 
 #about-body {
@@ -128,13 +157,22 @@
 	margin-right: auto;
 	min-width: 600px;
 	margin-top: 20px;
-	font-family: Arial;
+	font-family: NimbusSans;
 	font-size: 1.0em;
 	font-weight: 500;
 	text-align: justify;
 
 	-webkit-animation: fadein 1s ; 
     animation: fadein 1s;
+}
+
+#about-head {
+	-webkit-animation: fadein 0.8s; 
+    animation: fadein 0.8s;
+}
+
+#last-container {
+	height: 100%;
 }
 
 #info-text-container {
@@ -153,6 +191,10 @@
 
 }
 
+#info-text-row {
+	margin: auto;
+}
+
 .music-links {
 	margin-top: 13px;
 	height: 35px;
@@ -165,16 +207,14 @@
 
 .press-container {
 	margin-bottom: 45px;
-	
+	font-family: NimbusSansBold;
 	.press {
 		text-align: left;
 	}
 }
 
-
-
 .press-title {
-	font-size: 32px;
+	font-size: 28px;
 	font-weight: 600;
 	margin-bottom: 10px;
 	
@@ -230,16 +270,17 @@
 }
 
 .album-text {
-	font-family: Arial;
+	//font-family: Arial;
+	margin-top: 3px;
 	text-align: left;
 
 	.album-text-header {
-		font-weight: bold;
+		font-family: NimbusSansBold;
 		font-size: 18px;
 	}
 
 	.album-text-rdate {
-		
+		font-family: Arial;
 	}
 
 	.album-text-remark {
@@ -257,7 +298,7 @@
 	//padding-right: 15px;
 	
 	.event {
-		font-family: Arial;
+		font-family: NimbusSansBold;
 		text-align: left;
 		color: white;
 		font-weight: 600;
@@ -271,14 +312,21 @@
     height: 100%;
     margin-right: 10px;
 }
+
+#music-title {
+	cursor: pointer;
+}
+
+#music-title:active {
+	color: #ffff80;
+}
 	
 .social {
 	margin-left: 0;
 	margin-right: 0;
 	margin-bottom: 28px;
-	font-family: Arial;
+	font-family: NimbusSansBold;
 	color: white;
-	font-weight: 600;
 	font-size: 20px;
 	max-width: 100%;
 	width: 100%;
@@ -303,6 +351,7 @@
 		margin: auto;		
 		
 		a {
+			padding-top: 4px;
 			color: white;
 		}
 		
@@ -312,16 +361,19 @@
 	}
 }	
 
-
-
 .outline {
 	padding: 10px;
 	height: auto;
+	width: 85%;
 	display: inline-block;
 	
 	float: left;
     margin-bottom: 20px;
     margin-left: 50px;
+}
+
+#second-column-small-screen {
+	display: none;
 }
 
 #show-header {
@@ -330,4 +382,67 @@
 
 .venue {
 	//border-bottom: 2px solid white;
+}
+
+@media (max-width: 1563px) {
+    .outline {
+		padding: 10px;
+		height: auto;
+		width: 100%;
+		display: inline-block;
+		
+		float: left;
+		margin-bottom: 20px;
+		margin-left: 0px;
+	}
+
+	.album-art {	
+		max-width: 132px;
+	}
+}
+
+@media (max-width: 1343px) {
+    .album-art {	
+		max-width: 100px;
+	}
+}
+
+// 1245px; album art becomes full width
+@media (max-width: 1245px) {
+    .album-art {	
+		min-width: 100%;
+		max-width: 100%;
+		margin-bottom: 5px;
+	}
+	.album-info {
+		margin-left: 0px;
+	}
+
+	#second-column-small-screen {
+		display: inline-block;
+	}
+	#center-container {
+		display: none;
+	}
+	#last-container {
+		display: none;
+	}
+}
+
+@media (max-width: 1200px) {
+	.title {
+		display: none;
+	}
+}
+
+@media (max-width: 1120px) {
+	#header-text {
+		display: none !important;
+	}
+}
+
+@media (max-width: 910px) {
+	#about-body {
+		max-width: 80%;
+	}
 }

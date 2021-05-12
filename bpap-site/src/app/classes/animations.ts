@@ -44,7 +44,7 @@ export const MusicBoxHoverAnimation =
 	transition('show=>hide', [
 		group([
 			query('@MusicBoxLinksHover', animateChild()),
-			animate('800ms'),
+			animate('600ms'),
 		]),
 	]),
 ]);
