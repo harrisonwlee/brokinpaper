@@ -65,7 +65,7 @@ export class EpkComponent implements OnInit, OnDestroy {
 		this.resizeObservable$ = fromEvent(window, 'resize');
     	this.resizeSubscription$ = this.resizeObservable$.subscribe( evt => {
 			const currentWindow = evt.target as Window;
-			if (currentWindow.innerWidth < 1245) {
+			if (currentWindow.innerWidth < 1262) {
 				/*
 				this.togglestate.fill('on');
 				this.outlinehover.fill('show');
